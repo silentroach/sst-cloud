@@ -1,0 +1,21 @@
+{
+  "name": "sst-cloud",
+  "version": "0.0.1",
+  "description": "sst-cloud.com interface",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava",
+    "coverage": "nyc ava && nyc report --reporter=html"
+  },
+  "author": "Igor Kalashnikov <igor.kalashnikov@me.com> (https://github.com/silentroach)",
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.83.0"
+  },
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "faker": "^4.1.0",
+    "nock": "^9.1.6",
+    "nyc": "^11.4.1"
+  }
+}
