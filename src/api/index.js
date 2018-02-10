@@ -95,18 +95,18 @@ class API {
 
 	/**
 	 * Информация о доме
-	 * GET /houses/{id}/
+	 * GET /houses/{houseId}/
 	 * https://api.sst-cloud.com/docs/#!/houses/read
 	 *
-	 * @param {Number} id
+	 * @param {Number} houseId
 	 */
-	async houseById(id) {
-		return makeAuthRequest(this[SessionIdProp], 'GET', `/houses/${id}/`);
+	async houseById(houseId) {
+		return makeAuthRequest(this[SessionIdProp], 'GET', `/houses/${houseId}/`);
 	}
 
 	/**
 	 * Список устройств в доме
-	 * GET /houses/{id}/devices/
+	 * GET /houses/{houseId}/devices/
 	 * https://api.sst-cloud.com/docs/#!/devices/devices_list
 	 *
 	 * @param {Number} houseId
@@ -125,6 +125,29 @@ class API {
 	 */
 	async deviceById(houseId, deviceId) {
 		return makeAuthRequest(this[SessionIdProp], 'GET', `/houses/${houseId}/devices/${deviceId}/`);	
+	}
+
+	/**
+	 * Список сетей в доме
+	 * GET /houses/{houseId}/networks/
+	 * https://api.sst-cloud.com/docs/#!/networks/networks_list
+	 *
+	 * @param {Number} houseId
+	 */
+	async networks(houseId) {
+		return makeAuthRequest(this[SessionIdProp], 'GET', `/houses/${houseId}/networks/`);
+	}
+
+	/**
+	 * Информация о сети
+	 * GET /houses/{houseId}/networks/{networkId}/
+	 * https://api.sst-cloud.com/docs/#!/networks/networks_read
+	 *
+	 * @param {Number} houseId
+	 * @param {Number} networkId
+	 */
+	async networkById(houseId, networkId) {
+		return makeAuthRequest(this[SessionIdProp], 'GET', `/houses/${houseId}/networks/${networkId}/`);
 	}
 }
 
