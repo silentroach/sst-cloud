@@ -27,6 +27,16 @@ test('successful api login returns session id', async t => {
 	t.is(await API.login('test', 'me'), sessionId);
 });
 
+test('sessionId is readable property', t => {
+	const sessionId = faker.random.uuid();
+
+	const api = new API(sessionId);
+
+	t.is(api.sessionId, sessionId);
+
+	t.throws(() => api.sessionId = 'kek', TypeError, 'sessionId property should be read-only');
+});
+
 test('wrong api login response throws an error', async t => {
 	nock(NockScope)
 		.post('/auth/login/')

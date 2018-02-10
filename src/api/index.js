@@ -75,13 +75,17 @@ class API {
 		this[SessionIdProp] = sessionId;
 	}
 
+	get sessionId() {
+		return this[SessionIdProp];
+	}
+
 	/**
 	 * Информация о пользователе
 	 * GET /auth/user/
 	 * https://api.sst-cloud.com/docs/#!/auth/user_list
 	 */
 	async user() {
-		return makeAuthRequest(this[SessionIdProp], 'GET', '/auth/user/');
+		return makeAuthRequest(this.sessionId, 'GET', '/auth/user/');
 	}
 
 	/**
@@ -90,7 +94,7 @@ class API {
 	 * https://api.sst-cloud.com/docs/#!/houses/list
 	 */
 	async houses() {
-		return makeAuthRequest(this[SessionIdProp], 'GET', '/houses/');
+		return makeAuthRequest(this.sessionId, 'GET', '/houses/');
 	}
 
 	/**
@@ -101,7 +105,7 @@ class API {
 	 * @param {Number} houseId
 	 */
 	async houseById(houseId) {
-		return makeAuthRequest(this[SessionIdProp], 'GET', `/houses/${houseId}/`);
+		return makeAuthRequest(this.sessionId, 'GET', `/houses/${houseId}/`);
 	}
 
 	/**
@@ -112,7 +116,7 @@ class API {
 	 * @param {Number} houseId
 	 */
 	async networks(houseId) {
-		return makeAuthRequest(this[SessionIdProp], 'GET', `/houses/${houseId}/networks/`);
+		return makeAuthRequest(this.sessionId, 'GET', `/houses/${houseId}/networks/`);
 	}
 
 	/**
@@ -124,7 +128,7 @@ class API {
 	 * @param {Number} networkId
 	 */
 	async networkById(houseId, networkId) {
-		return makeAuthRequest(this[SessionIdProp], 'GET', `/houses/${houseId}/networks/${networkId}/`);
+		return makeAuthRequest(this.sessionId, 'GET', `/houses/${houseId}/networks/${networkId}/`);
 	}
 
 	/**
@@ -135,7 +139,7 @@ class API {
 	 * @param {Number} houseId
 	 */
 	async devices(houseId) {
-		return makeAuthRequest(this[SessionIdProp], 'GET', `/houses/${houseId}/devices/`);
+		return makeAuthRequest(this.sessionId, 'GET', `/houses/${houseId}/devices/`);
 	}
 
 	/**
@@ -147,7 +151,7 @@ class API {
 	 * @param {Number} deviceId
 	 */
 	async deviceById(houseId, deviceId) {
-		return makeAuthRequest(this[SessionIdProp], 'GET', `/houses/${houseId}/devices/${deviceId}/`);
+		return makeAuthRequest(this.sessionId, 'GET', `/houses/${houseId}/devices/${deviceId}/`);
 	}
 
 	/**
@@ -159,7 +163,7 @@ class API {
 	 * @param {Number} deviceId
 	 */
 	async sensors(houseId, deviceId) {
-		return makeAuthRequest(this[SessionIdProp], 'GET', `/houses/${houseId}/devices/${deviceId}/wireless_sensors/`);
+		return makeAuthRequest(this.sessionId, 'GET', `/houses/${houseId}/devices/${deviceId}/wireless_sensors/`);
 	}
 
 	/**
@@ -171,7 +175,7 @@ class API {
 	 * @param {Number} deviceId
 	 */
 	async counters(houseId, deviceId) {
-		return makeAuthRequest(this[SessionIdProp], 'GET', `/houses/${houseId}/devices/${deviceId}/counters/`);
+		return makeAuthRequest(this.sessionId, 'GET', `/houses/${houseId}/devices/${deviceId}/counters/`);
 	}
 }
 
