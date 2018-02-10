@@ -6,7 +6,8 @@
   "scripts": {
     "test": "ava",
     "lint": "eslint ./",
-    "coverage": "nyc ava && nyc report --reporter=html"
+    "coverage": "nyc ava && nyc report --reporter=html",
+    "travis": "npm t -- --verbose"
   },
   "author": "Igor Kalashnikov <igor.kalashnikov@me.com> (https://github.com/silentroach)",
   "license": "MIT",

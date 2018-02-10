@@ -1,5 +1,7 @@
 # SST Cloud
 
+[![Travis](https://img.shields.io/travis/silentroach/sst-cloud.svg?style=flat-square&label=travis)](https://travis-ci.org/silentroach/sst-cloud)
+
 Модуль для работы с устройствами через SST Cloud.
 
 ---
