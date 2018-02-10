@@ -75,14 +75,18 @@ class API {
 		this[SessionIdProp] = sessionId;
 	}
 
+	/**
+	 * Идентификатор сессии
+	 */
 	get sessionId() {
 		return this[SessionIdProp];
 	}
 
 	/**
-	 * Информация о пользователе
+	 * Получение информации о текущем пользователе
 	 * GET /auth/user/
-	 * https://api.sst-cloud.com/docs/#!/auth/user_list
+	 *
+	 * @link https://api.sst-cloud.com/docs/#!/auth/user_list
 	 */
 	async user() {
 		return makeAuthRequest(this.sessionId, 'GET', '/auth/user/');
@@ -91,16 +95,18 @@ class API {
 	/**
 	 * Список домов
 	 * GET /houses/
-	 * https://api.sst-cloud.com/docs/#!/houses/list
+	 *
+	 * @link https://api.sst-cloud.com/docs/#!/houses/list
 	 */
 	async houses() {
 		return makeAuthRequest(this.sessionId, 'GET', '/houses/');
 	}
 
 	/**
-	 * Информация о доме
+	 * Информация о доме по его идентификатору
 	 * GET /houses/{houseId}/
-	 * https://api.sst-cloud.com/docs/#!/houses/read
+	 *
+	 * @link https://api.sst-cloud.com/docs/#!/houses/read
 	 *
 	 * @param {Number} houseId
 	 */
@@ -111,7 +117,8 @@ class API {
 	/**
 	 * Список сетей в доме
 	 * GET /houses/{houseId}/networks/
-	 * https://api.sst-cloud.com/docs/#!/networks/networks_list
+	 *
+	 * @link https://api.sst-cloud.com/docs/#!/networks/networks_list
 	 *
 	 * @param {Number} houseId
 	 */
@@ -120,9 +127,10 @@ class API {
 	}
 
 	/**
-	 * Информация о сети
+	 * Информация о сети по ее идентификатору
 	 * GET /houses/{houseId}/networks/{networkId}/
-	 * https://api.sst-cloud.com/docs/#!/networks/networks_read
+	 *
+	 * @link https://api.sst-cloud.com/docs/#!/networks/networks_read
 	 *
 	 * @param {Number} houseId
 	 * @param {Number} networkId
@@ -134,7 +142,8 @@ class API {
 	/**
 	 * Список устройств в доме
 	 * GET /houses/{houseId}/devices/
-	 * https://api.sst-cloud.com/docs/#!/devices/devices_list
+	 *
+	 * @link https://api.sst-cloud.com/docs/#!/devices/devices_list
 	 *
 	 * @param {Number} houseId
 	 */
@@ -143,9 +152,10 @@ class API {
 	}
 
 	/**
-	 * Информация об устройстве
+	 * Информация об устройстве по его идентификатору
 	 * GET /houses/{houseId}/devices/{id}/
-	 * https://api.sst-cloud.com/docs/#!/devices/devices_read
+	 *
+	 * @link https://api.sst-cloud.com/docs/#!/devices/devices_read
 	 *
 	 * @param {Number} houseId
 	 * @param {Number} deviceId
@@ -155,9 +165,10 @@ class API {
 	}
 
 	/**
-	 * Список беспроводных датчиков
+	 * Список беспроводных датчиков, зарегистрированных в устройстве
 	 * GET /houses/{houseId}/wireless_sensors/
-	 * https://api.sst-cloud.com/docs/#!/devices/devices_wsensors_read
+	 *
+	 * @link https://api.sst-cloud.com/docs/#!/devices/devices_wsensors_read
 	 *
 	 * @param {Number} houseId
 	 * @param {Number} deviceId
@@ -167,9 +178,10 @@ class API {
 	}
 
 	/**
-	 * Информация о счетчиках
+	 * Информация о счетчиках, зарегистрированных на устройстве
 	 * GET /houses/{houseId}/devices/{deviceId}/counters/
-	 * https://api.sst-cloud.com/docs/#!/devices/devices_counters_read
+	 *
+	 * @link https://api.sst-cloud.com/docs/#!/devices/devices_counters_read
 	 *
 	 * @param {Number} houseId
 	 * @param {Number} deviceId
