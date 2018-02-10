@@ -7,7 +7,7 @@
     "test": "ava",
     "lint": "eslint ./",
     "coverage": "nyc ava && nyc report --reporter=html",
-    "travis": "npm t -- --verbose"
+    "travis": "nyc ava && nyc report --reporter=text-lcov | coveralls"
   },
   "author": "Igor Kalashnikov <igor.kalashnikov@me.com> (https://github.com/silentroach)",
   "license": "MIT",
@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "ava": "^0.25.0",
+    "coveralls": "^3.0.0",
     "eslint": "^4.17.0",
     "eslint-plugin-ava": "^4.5.0",
     "faker": "^4.1.0",

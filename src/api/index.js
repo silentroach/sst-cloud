@@ -32,7 +32,7 @@ async function makeAuthRequest(sessionId, method, url, data) {
 	return makeRequest(method, url, data, jar);
 }
 
-const SessionIdProp = Symbol();
+const SessionIdProp = Symbol('sessionId');
 
 /**
  * Доступ к SST-Cloud
