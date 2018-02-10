@@ -105,6 +105,29 @@ class API {
 	}
 
 	/**
+	 * Список сетей в доме
+	 * GET /houses/{houseId}/networks/
+	 * https://api.sst-cloud.com/docs/#!/networks/networks_list
+	 *
+	 * @param {Number} houseId
+	 */
+	async networks(houseId) {
+		return makeAuthRequest(this[SessionIdProp], 'GET', `/houses/${houseId}/networks/`);
+	}
+
+	/**
+	 * Информация о сети
+	 * GET /houses/{houseId}/networks/{networkId}/
+	 * https://api.sst-cloud.com/docs/#!/networks/networks_read
+	 *
+	 * @param {Number} houseId
+	 * @param {Number} networkId
+	 */
+	async networkById(houseId, networkId) {
+		return makeAuthRequest(this[SessionIdProp], 'GET', `/houses/${houseId}/networks/${networkId}/`);
+	}
+
+	/**
 	 * Список устройств в доме
 	 * GET /houses/{houseId}/devices/
 	 * https://api.sst-cloud.com/docs/#!/devices/devices_list
@@ -128,26 +151,27 @@ class API {
 	}
 
 	/**
-	 * Список сетей в доме
-	 * GET /houses/{houseId}/networks/
-	 * https://api.sst-cloud.com/docs/#!/networks/networks_list
+	 * Список беспроводных датчиков
+	 * GET /houses/{houseId}/wireless_sensors/
+	 * https://api.sst-cloud.com/docs/#!/devices/devices_wsensors_read
 	 *
 	 * @param {Number} houseId
+	 * @param {Number} deviceId
 	 */
-	async networks(houseId) {
-		return makeAuthRequest(this[SessionIdProp], 'GET', `/houses/${houseId}/networks/`);
+	async sensors(houseId, deviceId) {
+		return makeAuthRequest(this[SessionIdProp], 'GET', `/houses/${houseId}/devices/${deviceId}/wireless_sensors/`);
 	}
 
 	/**
-	 * Информация о сети
-	 * GET /houses/{houseId}/networks/{networkId}/
-	 * https://api.sst-cloud.com/docs/#!/networks/networks_read
+	 * Информация о счетчиках
+	 * GET /houses/{houseId}/devices/{deviceId}/counters/
+	 * https://api.sst-cloud.com/docs/#!/devices/devices_counters_read
 	 *
 	 * @param {Number} houseId
-	 * @param {Number} networkId
+	 * @param {Number} deviceId
 	 */
-	async networkById(houseId, networkId) {
-		return makeAuthRequest(this[SessionIdProp], 'GET', `/houses/${houseId}/networks/${networkId}/`);
+	async counters(houseId, deviceId) {
+		return makeAuthRequest(this[SessionIdProp], 'GET', `/houses/${houseId}/devices/${deviceId}/counters/`);
 	}
 }
 
