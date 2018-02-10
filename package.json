@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "ava",
+    "lint": "eslint ./",
     "coverage": "nyc ava && nyc report --reporter=html"
   },
   "author": "Igor Kalashnikov <igor.kalashnikov@me.com> (https://github.com/silentroach)",
@@ -14,6 +15,8 @@
   },
   "devDependencies": {
     "ava": "^0.25.0",
+    "eslint": "^4.17.0",
+    "eslint-plugin-ava": "^4.5.0",
     "faker": "^4.1.0",
     "nock": "^9.1.6",
     "nyc": "^11.4.1"

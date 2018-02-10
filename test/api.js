@@ -1,11 +1,11 @@
 const nock = require('nock');
-const {test} = require('ava');
+const test = require('ava').test;
 const faker = require('faker');
 
 const {API} = require('../');
 
 test.beforeEach(() => {
-	nock.disableNetConnect();	
+	nock.disableNetConnect();
 });
 
 test.afterEach(() => {

@@ -48,7 +48,7 @@ class API {
 	static async login(email, password) {
 		const jar = request.jar();
 
-		const data = await makeRequest('POST', '/auth/login/', {
+		await makeRequest('POST', '/auth/login/', {
 			username: email,
 			password
 		}, jar);
@@ -124,7 +124,7 @@ class API {
 	 * @param {Number} deviceId
 	 */
 	async deviceById(houseId, deviceId) {
-		return makeAuthRequest(this[SessionIdProp], 'GET', `/houses/${houseId}/devices/${deviceId}/`);	
+		return makeAuthRequest(this[SessionIdProp], 'GET', `/houses/${houseId}/devices/${deviceId}/`);
 	}
 
 	/**
