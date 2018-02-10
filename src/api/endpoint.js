@@ -1,0 +1,1 @@
+module.exports = 'https://api.sst-cloud.com/';

@@ -12,7 +12,7 @@ test.afterEach(() => {
 	nock.enableNetConnect();
 });
 
-const NockScope = 'https://api.sst-cloud.com';
+const NockScope = require('../src/api/endpoint');
 
 test('successful api login returns session id', async t => {
 	const sessionId = faker.random.uuid();

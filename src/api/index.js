@@ -1,7 +1,7 @@
-const BaseUrl = 'https://api.sst-cloud.com/';
+const Endpoint = require('./endpoint');
 
 const request = require('request').defaults({
-	baseUrl: BaseUrl,
+	baseUrl: Endpoint,
 	json: true
 });
 
@@ -27,7 +27,7 @@ async function makeAuthRequest(sessionId, method, url, data) {
 	const sessionCookie = request.cookie('sessionid=');
 	sessionCookie.value = sessionId;
 
-	jar.setCookie(sessionCookie, BaseUrl);
+	jar.setCookie(sessionCookie, Endpoint);
 
 	return makeRequest(method, url, data, jar);
 }
@@ -54,7 +54,7 @@ class API {
 		}, jar);
 
 		const sessionCookie = jar
-			.getCookies(BaseUrl)
+			.getCookies(Endpoint)
 			.find(cookie => 'sessionid' === cookie.key);
 
 		if (undefined === sessionCookie) {
