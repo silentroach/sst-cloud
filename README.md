@@ -21,11 +21,32 @@
 
 ### Низкоуровневый
 
-	const {API} = require('sst-cloud');
+```javascript
+// импортируем модуль для работы с API
+const {API} = require('sst-cloud');
+
+// для работы нужен ключ сессии, который пробрасываем в конструктор
+const api = new API(
+	// ключ сессии можно получить через авторизацию
+	await API.login(/* email */, /* password */)
+);
+
+// все остальные методы для получения информации асинхронны
+// и возвращают в ответ ту информацию и в том виде, что ее вернул API,
+// без дополнительной обработки
+const userInfo = await api.user();
+
+console.log(userInfo);
+// { pk: 123,
+//   username: 'xxx',
+//   email: 'xxx',
+//   profile: { ... }
+// }
+```
 
 Методы API (автогенерировано, но генератор пока стыдно выкладывать):
 
-`.login(String email, String password)` ~> `String`
+`(static)` `API.login(String email, String password)` ~> `String`
 
 Авторизация ~> Идентификатор сессии
 
