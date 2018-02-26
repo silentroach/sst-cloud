@@ -1,0 +1,12 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "prompt": "^1.0.0",
+    "chalk": "^2.3.0"
+  }
+}
