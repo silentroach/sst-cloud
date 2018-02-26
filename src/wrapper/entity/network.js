@@ -3,12 +3,12 @@ const Entity = require('./');
 /**
  * Сеть
  *
- * @property {Number} id
- * @property {Number} houseId
- * @property {Array.<Number>} deviceIds
- * @property {String} name
- * @property {Date} created
- * @property {Date} updated
+ * @property {Number} id Идентификатор
+ * @property {Number} houseId Идентификатор дома
+ * @property {Array.<Number>} deviceIds Идентификаторы устройств
+ * @property {String} name Название
+ * @property {Date} created Дата создания
+ * @property {Date} updated Дата изменения
  */
 class Network extends Entity {
 	static mapping() {

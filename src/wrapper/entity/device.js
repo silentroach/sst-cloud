@@ -4,15 +4,15 @@ const Sensor = require('./sensor');
 /**
  * Устройство
  *
- * @property {Number} id
- * @property {Number} houseId
- * @property {Number} networkId
- * @property {Date} created
- * @property {Date} updated
- * @property {String} name
- * @property {Boolean} active
- * @property {Boolean} connected
- * @property {Device.Types} type
+ * @property {Number} id Идентификатор
+ * @property {Number} houseId Идентификатор дома
+ * @property {Number} networkId Идентификатор сети
+ * @property {Date} created Дата создания
+ * @property {Date} updated Дата изменения
+ * @property {String} name Название
+ * @property {Boolean} active Флаг активности
+ * @property {Boolean} connected Флаг соединения с сетью
+ * @property {Device.Types} type Тип устройства
  */
 class Device extends Entity {
 	static mapping() {
@@ -29,6 +29,10 @@ class Device extends Entity {
 		];
 	}
 
+	/**
+	 * Получить список беспроводных сенсоров
+	 * @returns {Array.<Sensor>}
+	 */
 	async sensors() {
 		const sensors = await this.api.sensors(this.houseId, this.id);
 

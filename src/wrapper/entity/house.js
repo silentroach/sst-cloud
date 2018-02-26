@@ -5,11 +5,11 @@ const Device = require('./device');
 /**
  * Дом
  *
- * @property {Number} id
- * @property {String} name
- * @property {String} timezone
- * @property {Date} created
- * @property {Date} updated
+ * @property {Number} id Идентификатор
+ * @property {String} name Название
+ * @property {String} timezone Временная зона
+ * @property {Date} created Дата создания
+ * @property {Date} updated Дата изменения
  */
 class House extends Entity {
 	static mapping() {
@@ -22,12 +22,20 @@ class House extends Entity {
 		];
 	}
 
+	/**
+	 * Получить список сетей
+	 * @returns {Array.<Network>}
+	 */
 	async networks() {
 		const networks = await this.api.networks(this.id);
 
 		return networks.map(networkInfo => new Network(this.api, networkInfo));
 	}
 
+	/**
+	 * Получить список устройств
+	 * @returns {Array.<Device>}
+	 */
 	async devices() {
 		const devices = await this.api.devices(this.id);
 

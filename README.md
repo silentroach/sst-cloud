@@ -13,13 +13,9 @@
 
 ---
 
-## Доступ к API
+# Доступ к API
 
-### Высокоуровневый
-
-Пока в процессе, сорян
-
-### Низкоуровневый
+## Низкоуровневый
 
 ```javascript
 // импортируем модуль для работы с API
@@ -86,3 +82,87 @@ console.log(userInfo);
 
 Информация о счетчиках, зарегистрированных на устройстве
 
+## Высокоуровневый
+
+```javascript
+// импортируем модуль для работы с API
+const {wrapper} = require('sst-cloud');
+
+// получаем корневой объект через авторизацию
+const root = await wrapper.login(
+	/* email */, /* password */
+);
+
+// все остальные методы - получают информацию и оборачивают ее в объекты
+// все свойства - read-only, все методы - асинхронные
+
+for (const house of await root.houses()) {
+	console.log(`* ${house.name}`);
+
+	for (const device of await house.devices()) {
+		console.log(`  * ${device.name}`);
+	}
+}
+
+// * Дом
+//   * Санузлы
+//   * Кухня
+```
+
+### Root (Сессия)
+
+`.houses()` ~> `Array.<House>`
+
+Получить список домов
+
+`.houseById(Number houseId)` ~> `House`
+
+Получить информацию о доме по его идентификатору
+
+### House (Дом)
+
+* `id` `Number` Идентификатор
+* `name` `String` Название
+* `timezone` `String` Временная зона
+* `created` `Date` Дата создания
+* `updated` `Date` Дата изменения
+
+`.networks()` ~> `Array.<Network>`
+
+Получить список сетей
+
+`.devices()` ~> `Array.<Device>`
+
+Получить список устройств
+
+### Device (Устройство)
+
+* `id` `Number` Идентификатор
+* `houseId` `Number` Идентификатор дома
+* `networkId` `Number` Идентификатор сети
+* `created` `Date` Дата создания
+* `updated` `Date` Дата изменения
+* `name` `String` Название
+* `active` `Boolean` Флаг активности
+* `connected` `Boolean` Флаг соединения с сетью
+* `type` `Device.Types` Тип устройства
+
+`.sensors()` ~> `Array.<Sensor>`
+
+Получить список беспроводных сенсоров
+
+### Sensor (Сенсор)
+
+* `name` `String` Название
+* `signal` `Number` Уровень сигнала
+* `battery` `Number` Уровень заряда батарейки
+* `attention` `Boolean` Индикатор протечки
+
+### Network (Сеть)
+
+* `id` `Number` Идентификатор
+* `houseId` `Number` Идентификатор дома
+* `deviceIds` `Array.<Number>` Идентификаторы устройств
+* `name` `String` Название
+* `created` `Date` Дата создания
+* `updated` `Date` Дата изменения

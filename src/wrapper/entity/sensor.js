@@ -1,13 +1,12 @@
 const Entity = require('./');
 
-
 /**
  * Сенсор
  *
- * @property {String} name
- * @property {Number} signal
- * @property {Number} battery
- * @property {Boolean} attention
+ * @property {String} name Название
+ * @property {Number} signal Уровень сигнала
+ * @property {Number} battery Уровень заряда батарейки
+ * @property {Boolean} attention Индикатор протечки
  */
 class Sensor extends Entity {
 	static mapping() {
