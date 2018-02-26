@@ -43,7 +43,7 @@ test('fields mapping', t => {
 
 	const k = new FakeEntity(api, {
 		keep: value,
-		someKek: value 
+		someKek: value
 	});
 
 	t.is(k.keep, value);
