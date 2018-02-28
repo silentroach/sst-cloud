@@ -1,5 +1,6 @@
 # SST Cloud
 
+[![npm](https://img.shields.io/npm/v/sst-cloud.svg?style=flat-square)](https://www.npmjs.com/package/sst-cloud)
 [![Travis](https://img.shields.io/travis/silentroach/sst-cloud.svg?style=flat-square&label=travis)](https://travis-ci.org/silentroach/sst-cloud)
 [![Coveralls](https://img.shields.io/coveralls/silentroach/sst-cloud.svg?style=flat-square&label=coverage)](https://coveralls.io/r/silentroach/sst-cloud)
 
@@ -40,7 +41,7 @@ console.log(userInfo);
 // }
 ```
 
-Методы API (автогенерировано, но генератор пока стыдно выкладывать):
+Методы API:
 
 `(static)` `API.login(String email, String password)` ~> `String`
 
