@@ -83,6 +83,14 @@ console.log(userInfo);
 
 Информация о счетчиках, зарегистрированных на устройстве
 
+`.news()`
+
+Список новостей
+
+`.newsById(Number newsId)`
+
+Новости по идентификатору
+
 ## Высокоуровневый
 
 ```javascript
@@ -119,6 +127,21 @@ for (const house of await root.houses()) {
 `.houseById(Number houseId)` ~> `House`
 
 Получить информацию о доме по его идентификатору
+
+`.news()` ~> `Array.<News>`
+
+Получить список новостей
+
+`.newsById(Number newsId)` ~> `News`
+
+Получить новость по ее идентификатору
+
+### News (Новость)
+
+* `id` `Number` Идентификатор
+* `title` `String` Заголовок
+* `body` `String` Текст
+* `created` `Date` Дата
 
 ### House (Дом)
 

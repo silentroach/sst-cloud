@@ -1,5 +1,6 @@
 const Entity = require('./');
 const House = require('./house');
+const News = require('./news');
 
 /**
  * Сессия
@@ -22,6 +23,25 @@ class Root extends Entity {
 	 */
 	async houseById(houseId) {
 		return new House(this.api, await this.api.houseById(houseId));
+	}
+
+	/**
+	 * Получить список новостей
+	 * @returns {Array.<News>}
+	 */
+	async news() {
+		const news = await this.api.news();
+
+		return news.map(newsInfo => new News(this.api, newsInfo))
+	}
+
+	/**
+	 * Получить новость по ее идентификатору
+	 * @param {Number} newsId Идентификатор новости
+	 * @returns {News}
+	 */
+	async newsById(newsId) {
+		return new News(this.api, await this.api.newsById(newsId));
 	}
 }
 

@@ -189,6 +189,28 @@ class API {
 	async counters(houseId, deviceId) {
 		return makeAuthRequest(this.sessionId, 'GET', `/houses/${houseId}/devices/${deviceId}/counters/`);
 	}
+
+	/**
+	 * Список новостей
+	 * GET /news
+	 *
+	 * @link https://api.sst-cloud.com/docs/#!/news/news
+	 */
+	async news() {
+		return makeAuthRequest(this.sessionId, 'GET', '/news/');
+	}
+
+	/**
+	 * Новости по идентификатору
+	 * GET /news/{newsId}
+	 *
+	 * @link https://api.sst-cloud.com/docs/#!/news/cur_news
+	 *
+	 * @param {Number} newsId
+	 */
+	async newsById(newsId) {
+		return makeAuthRequest(this.sessionId, 'GET', `/news/${newsId}`);
+	}
 }
 
 module.exports = API;

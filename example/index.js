@@ -1,7 +1,7 @@
 const chalk = require('chalk');
 const prompt = require('prompt');
 
-const {API, wrapper} = require('../');
+const {wrapper} = require('../');
 
 console.log(chalk.green('Введите данные для авторизации'));
 
@@ -26,6 +26,17 @@ prompt.message = undefined;
 	const root = await wrapper.login(
 		email, password
 	);
+
+	const news = await root.news();
+	if (!news.length) {
+		console.log('🗞  Нет новостей, зато метод для их получения есть\n');
+	} else {
+		console.log('🗞  Последняя новость:');
+
+		const last = news.shift();
+		console.log(`* ${last.title}`);
+		console.log(last.body, '\n');
+	}
 
 	for (const house of await root.houses()) {
 		console.log(`🏡  ${chalk.yellow.bold(house.name)}`);
