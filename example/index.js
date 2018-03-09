@@ -1,27 +1,23 @@
 const chalk = require('chalk');
-const prompt = require('prompt');
+const prompts = require('prompts');
 
 const {wrapper} = require('../');
 
 console.log(chalk.green('Введите данные для авторизации'));
 
-prompt.start();
-prompt.message = undefined;
-
 (async () => {
 
-	const { email, password } = await require('util').promisify(prompt.get)({
-		properties: {
-			email: {
-				required: true
-			},
-			password: {
-				replace: '*',
-				hidden: true,
-				required: true
-			}
+	const { email, password } = await prompts([
+		{
+			type: 'text',
+			name: 'email',
+			message: 'What is your email on SST-Cloud?'
+		}, {
+			type: 'password',
+			name: 'password',
+			message: 'What is your password?'
 		}
-	});
+	]);
 
 	const root = await wrapper.login(
 		email, password
