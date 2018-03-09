@@ -39,7 +39,7 @@ prompt.message = undefined;
 	}
 
 	for (const house of await root.houses()) {
-		console.log(`🏡  ${chalk.yellow.bold(house.name)}`);
+		console.log(`🏡  ${chalk.yellow.bold(house.name)} ${chalk.grey(`#${house.id}`)}`);
 
 		const [devices, networks] = await Promise.all([
 			house.devices(),
@@ -57,6 +57,7 @@ prompt.message = undefined;
 				[
 					'   *',
 					device.name,
+					chalk.grey(`#${device.id}`),
 					network && chalk.grey(`~ ${network.name}`)
 				].filter(Boolean).join(' ')
 			);
