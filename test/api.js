@@ -3,6 +3,7 @@ const test = require('ava').test;
 const faker = require('faker');
 
 const {API} = require('../');
+const APIError = require('../src/api/error');
 
 test.beforeEach(() => {
 	nock.disableNetConnect();
@@ -13,6 +14,46 @@ test.afterEach(() => {
 });
 
 const NockScope = require('../src/api/endpoint');
+
+test('wrong api reponse handling', async t => {
+	nock(NockScope)
+		.post('/auth/login/')
+		.once()
+		.reply(500);
+
+	await t.throws(API.login('test', 'me'), APIError);
+});
+
+test('wrong api reponse data handling', async t => {
+	const responseData = {
+		some: 'data'
+	};
+
+	nock(NockScope)
+		.post('/auth/login/')
+		.once()
+		.reply(500, responseData);
+
+	const error = await t.throws(API.login('test', 'me'), APIError);
+
+	t.is(error.message, JSON.stringify(responseData));
+});
+
+test('wrong api reponse with details handling with non-field-errors', async t => {
+	const errorDetails = 'some error details';
+
+	nock(NockScope)
+		.post('/auth/login/')
+		.once()
+		.reply(400, {
+			non_field_errors: 'kek',
+			detail: errorDetails
+		});
+
+	const error = await t.throws(API.login('test', 'me'), APIError);
+
+	t.is(error.message, errorDetails);
+});
 
 test('successful api login returns session id', async t => {
 	const sessionId = faker.random.uuid();

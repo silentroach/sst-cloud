@@ -1,5 +1,7 @@
 const Endpoint = require('./endpoint');
 
+const APIError = require('./error');
+
 const request = require('request').defaults({
 	baseUrl: Endpoint,
 	json: true
@@ -16,7 +18,20 @@ async function makeRequest(method, url, data, jar) {
 				return;
 			}
 
-			resolve(body);
+			switch (response.statusCode) {
+				case 200:
+					resolve(body);
+					break;
+				default:
+					reject(new APIError(
+						'object' === typeof body
+							&& body.non_field_errors
+							&& body.detail
+							|| JSON.stringify(body)
+							|| 'API error'
+					));
+					break;
+			}
 		});
 	});
 }
