@@ -11,11 +11,11 @@ console.log(chalk.green('Введите данные для авторизаци
 		{
 			type: 'text',
 			name: 'email',
-			message: 'What is your email on SST-Cloud?'
+			message: 'Ваш email на sst-cloud'
 		}, {
 			type: 'password',
 			name: 'password',
-			message: 'What is your password?'
+			message: 'Пароль'
 		}
 	]);
 
