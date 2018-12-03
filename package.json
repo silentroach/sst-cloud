@@ -12,6 +12,7 @@
     "coverage": "nyc ava && nyc report --reporter=html",
     "travis": "nyc ava && nyc report --reporter=text-lcov | coveralls"
   },
+  "repository": "git://github.com/silentroach/sst-cloud.git",
   "author": "Igor Kalashnikov <igor.kalashnikov@me.com> (https://github.com/silentroach)",
   "license": "MIT",
   "engines": {
