@@ -1,5 +1,5 @@
 const nock = require('nock');
-const test = require('ava').test;
+const test = require('ava');
 const faker = require('faker');
 
 const {API} = require('../');

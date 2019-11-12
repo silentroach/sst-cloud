@@ -1,5 +1,5 @@
 const nock = require('nock');
-const test = require('ava').test;
+const test = require('ava');
 const faker = require('faker');
 
 const {API} = require('../');
@@ -21,7 +21,7 @@ test('wrong api reponse handling', async t => {
 		.once()
 		.reply(500);
 
-	await t.throws(API.login('test', 'me'), APIError);
+	await t.throwsAsync(() => API.login('test', 'me'), APIError);
 });
 
 test('wrong api reponse data handling', async t => {
@@ -34,7 +34,7 @@ test('wrong api reponse data handling', async t => {
 		.once()
 		.reply(500, responseData);
 
-	const error = await t.throws(API.login('test', 'me'), APIError);
+	const error = await t.throwsAsync(() => API.login('test', 'me'), APIError);
 
 	t.is(error.message, JSON.stringify(responseData));
 });
@@ -50,7 +50,7 @@ test('wrong api reponse with details handling with non-field-errors', async t =>
 			detail: errorDetails
 		});
 
-	const error = await t.throws(API.login('test', 'me'), APIError);
+	const error = await t.throwsAsync(() => API.login('test', 'me'), APIError);
 
 	t.is(error.message, errorDetails);
 });
@@ -84,7 +84,7 @@ test('wrong api login response throws an error', async t => {
 		.once()
 		.reply(200, { key: 'хз зачем они его вообще возвращают' });
 
-	await t.throws(API.login('test', 'me'), Error, 'should throw an error on no session id found');
+	await t.throwsAsync(() => API.login('test', 'me'), Error, 'should throw an error on no session id found');
 });
 
 test('net call error should throw an error', async t => {
@@ -93,7 +93,7 @@ test('net call error should throw an error', async t => {
 		.once()
 		.replyWithError('something wrong happened');
 
-	await t.throws(API.login('test', 'me'), Error, 'should throw an error network call error');
+	await t.throwsAsync(() => API.login('test', 'me'), Error, 'should throw an error network call error');
 });
 
 test('api constructor without session id throws an error', t => {
